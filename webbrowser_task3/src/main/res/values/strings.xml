@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WebBrowser_task3</string>
+    <string name="btn_back">Previous page</string>
+    <string name="btn_opn_brwsr">Open in browser</string>
 </resources>
