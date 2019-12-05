@@ -5,13 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        >
+        android:layout_weight="1">
    </WebView>
 
     <LinearLayout
@@ -23,7 +21,7 @@
 
         <Button
             android:id="@+id/btn_prev_page"
-            android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
+            android:drawableStart="@drawable/ic_arrow_back_black_24dp"
             android:textAlignment="textStart"
             android:layout_width="wrap_content"
             android:paddingEnd="@dimen/btn_padding"
@@ -36,10 +34,7 @@
             android:layout_gravity="center_vertical|start"
             android:text="@string/btn_back"
             android:textColor="@color/colorBtnTxt">
-
         </Button>
-
-
         <Button
             android:id="@+id/btn_opn_brwsr"
             android:layout_width="wrap_content"
@@ -53,6 +48,5 @@
             android:layout_gravity="center_vertical|end"
             android:text="@string/btn_opn_brwsr"
             android:textColor="@color/colorBtnTxt" />
-
     </LinearLayout>
 </LinearLayout>
