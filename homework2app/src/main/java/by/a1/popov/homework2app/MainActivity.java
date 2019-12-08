@@ -1,14 +1,12 @@
 package by.a1.popov.homework2app;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,20 +22,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_main);
         setSupportActionBar(toolbar);
-
-
     }
 
     @Override
     public void onClick(View view) {
         int viewId = view.getId();
         switch (viewId) {
-            case R.id.opn_customview:
-                Toast.makeText(view.getContext(), "Not done yet", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.opn_phonebook:
-                //Toast.makeText(view.getContext(), "Not done yet", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, PhoneContacts.class));
+                break;
+            case R.id.opn_customview:
+                //startActivity(new Intent(this, CustomViewActivity.class));
+                Toast.makeText(view.getContext(), "Not done yet :(", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.opn_webpage:
                 startActivity(new Intent(this, WebViewActivity.class));

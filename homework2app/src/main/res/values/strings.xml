@@ -9,4 +9,10 @@
     <string name="btn_back">Previous page</string>
     <string name="btn_opn_brwsr">Open in browser</string>
     <string name="title_activity_phone_contacts">PhoneContacts</string>
+    <string name="hint_Email">Email</string>
+    <string name="hint_Phone">Phone number</string>
+    <string name="hint_Name">Name</string>
+    <string name="no_contacts">No contacts. Please add</string>
+    <string name="home_page">https://google.com</string>
+
 </resources>

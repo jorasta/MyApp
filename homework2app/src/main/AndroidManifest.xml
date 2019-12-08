@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--activity
+        <activity android:name=".CustomViewActivity"></activity>
+        <!--
+        activity
             android:name=".PhoneContacts"
             android:label="@string/title_activity_phone_contacts"
-            android:theme="@style/AppTheme.NoActionBar"/-->
+            android:theme="@style/AppTheme.NoActionBar"/
+        -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +27,7 @@
         </activity>
         <activity android:name=".WebViewActivity" />
         <activity android:name=".PhoneContacts" />
-        <activity android:name=".AddContactActivity"/>
+        <activity android:name=".AddContactActivity" />
     </application>
 
 </manifest>

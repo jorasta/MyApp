@@ -1,39 +1,63 @@
 package by.a1.popov.homework2app;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
-
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class AddContactActivity extends AppCompatActivity {
 
-    private DynamicLayout dynamicLayout;
+    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_contact);
 
-        /*findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
+        editText = findViewById(R.id.viewEditContact);
+
+
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rgTypeContact);
+
+        /**
+         * different position RadioButtons depend on orientation
+          */
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+            radioGroup.setOrientation(LinearLayout.VERTICAL);
+        else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+            radioGroup.setOrientation(LinearLayout.HORIZONTAL);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
             @Override
-            public void onClick(View v) {
-
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rbPhone:
+                        editText.setHint(R.string.hint_Phone);
+                        break;
+                    case R.id.rbEmail:
+                        editText.setHint(R.string.hint_Email);
+                        break;
+                    default:
+                        break;
+                }
             }
-        });*/
-
+        });
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_add_contact);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
+    /**
+     * Menu used for arrow back
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.user_info_menu, menu);
@@ -47,17 +71,19 @@ public class AddContactActivity extends AppCompatActivity {
                 onBackPressed();
                 return true;
             case R.id.action_add:
-            /*
-                dynamicLayout = findViewById(R.id.viewItemContainer);
-                EditText etName = findViewById(R.id.viewEditName);
-                EditText etContact = findViewById(R.id.viewEditContact);
-                dynamicLayout.addItem(etName.getText().toString(), etContact.getText().toString(), R.drawable.ic_contact_mail_black_24dp);
-            */
-                Toast.makeText(this, "Not done yet", Toast.LENGTH_SHORT).show();
-                //super.onBackPressed();
+
+                EditText edtTextName = findViewById(R.id.viewEditName);
+                EditText edtTextContact = findViewById(R.id.viewEditContact);
+                RadioButton rbPhone = findViewById(R.id.rbPhone);
+
+                ContactRecord cRec = new ContactRecord(edtTextName.getText().toString(),
+                                                        edtTextContact.getText().toString(),
+                                                        rbPhone.isChecked() ? R.drawable.ic_contact_phone_black_24dp : R.drawable.ic_contact_mail_black_24dp);
+                PhoneContacts.list.add(cRec);
+                SingletoneObserve.getInstance().notifyContactsChange(PhoneContacts.list);
+                finish();
                 return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

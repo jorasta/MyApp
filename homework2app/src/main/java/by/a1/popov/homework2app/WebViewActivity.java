@@ -33,7 +33,7 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
                 return false;
             }
         });
-        mWebView.loadUrl("https://google.com");
+        mWebView.loadUrl(getResources().getString(R.string.home_page));
 
     }
 
@@ -46,11 +46,8 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(browserIntent);
                 break;
             case R.id.btn_prev_page:
-
-                    mWebView.goBack();
-
+                 mWebView.goBack();
                 break;
-
         }
     }
 
