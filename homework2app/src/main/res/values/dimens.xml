@@ -1,3 +1,20 @@
 <resources>
+    <dimen name="default_margin">15dp</dimen>
+    <dimen name="default_margin_top">10dp</dimen>
+    <dimen name="default_padding">10dp</dimen>
+
+    <dimen name="main_btns_width">180dp</dimen>
+
+    <!-- Phonebook-->
+    <dimen name="corner_radius_btn_rmv">15dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="txt_size_no_contacts">20sp</dimen>
+    <!-- WebView-->
+    <dimen name="corner_radius_btn_wv">20dp</dimen>
+    <dimen name="wv_btn_height">30dp</dimen>
+    <!-- CustomView-->
+
+
+
+
 </resources>

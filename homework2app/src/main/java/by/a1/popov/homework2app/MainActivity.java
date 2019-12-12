@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.opn_webpage).setOnClickListener(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.title_main);
         setSupportActionBar(toolbar);
     }
 

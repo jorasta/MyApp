@@ -13,17 +13,17 @@ import androidx.appcompat.widget.Toolbar;
 
 public class AddContactActivity extends AppCompatActivity {
 
-    private EditText editText;
+    EditText editText;
+    Toolbar toolbar;
+    RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_contact);
-
+        toolbar = findViewById(R.id.toolbar);
         editText = findViewById(R.id.viewEditContact);
-
-
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rgTypeContact);
+        radioGroup = (RadioGroup) findViewById(R.id.rgTypeContact);
 
         /**
          * different position RadioButtons depend on orientation
@@ -36,21 +36,19 @@ public class AddContactActivity extends AppCompatActivity {
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.rbPhone:
-                        editText.setHint(R.string.hint_Phone);
-                        break;
-                    case R.id.rbEmail:
-                        editText.setHint(R.string.hint_Email);
-                        break;
-                    default:
-                        break;
-                }
+            switch (checkedId) {
+                case R.id.rbPhone:
+                    editText.setHint(R.string.hint_Phone);
+                    break;
+                case R.id.rbEmail:
+                    editText.setHint(R.string.hint_Email);
+                    break;
+                default:
+                    break;
+            }
             }
         });
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.title_add_contact);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -60,7 +58,7 @@ public class AddContactActivity extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.user_info_menu, menu);
+        getMenuInflater().inflate(R.menu.add_contact_menu, menu);
         return true;
     }
 
@@ -79,8 +77,8 @@ public class AddContactActivity extends AppCompatActivity {
                 ContactRecord cRec = new ContactRecord(edtTextName.getText().toString(),
                                                         edtTextContact.getText().toString(),
                                                         rbPhone.isChecked() ? R.drawable.ic_contact_phone_black_24dp : R.drawable.ic_contact_mail_black_24dp);
-                PhoneContacts.list.add(cRec);
-                SingletoneObserve.getInstance().notifyContactsChange(PhoneContacts.list);
+
+                SingletoneObserve.getInstance().notifyContactAdd(cRec);
                 finish();
                 return true;
         }

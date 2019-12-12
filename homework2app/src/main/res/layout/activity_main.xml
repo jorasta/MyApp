@@ -10,32 +10,22 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
+        app:title="@string/title_main"
         style="@style/Toolbar"/>
 
     <Button
         android:id="@+id/opn_phonebook"
-        android:textColor="@color/colorBtnTxt"
-        android:background="@color/colorBtnBack"
+        style="@style/MainButtons"
         android:text="@string/btn_open_phonebook"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_width="@dimen/btn_width"
-        android:layout_height="wrap_content"/>
+        android:layout_marginTop="25dp"/>
     <Button
         android:id="@+id/opn_customview"
-        android:textColor="@color/colorBtnTxt"
-        android:background="@color/colorBtnBack"
-        android:text="@string/btn_open_cust_view"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_width="@dimen/btn_width"
-        android:layout_height="wrap_content"/>
+        style="@style/MainButtons"
+        android:text="@string/btn_open_cust_view" />
     <Button
         android:id="@+id/opn_webpage"
-        android:textColor="@color/colorBtnTxt"
-        android:background="@color/colorBtnBack"
-        android:text="@string/btn_open_web"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_width="@dimen/btn_width"
-        android:layout_height="wrap_content"/>
+        style="@style/MainButtons"
+        android:text="@string/btn_open_web"/>
 
 
 </LinearLayout>

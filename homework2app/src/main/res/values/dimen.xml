@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="corner_radius">20dp</dimen>
-    <dimen name="default_margin">15dp</dimen>
-    <dimen name="default_padding">20dp</dimen>
-    <dimen name="btn_height">30dp</dimen>
-    <dimen name="btn_width">180dp</dimen>
-
-</resources>

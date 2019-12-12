@@ -6,7 +6,9 @@ public class SingletoneObserve {
 
 
     interface ContactsListener{
-        void onContactsChange(ArrayList<ContactRecord> contactRecs);
+        void onContactsChange(ContactRecord contactRec, int position);
+        void onContactAdd(ContactRecord contactRec);
+        void onContactDel(int position);
     }
 
     private ArrayList<ContactsListener> listeners = new ArrayList<ContactsListener>();
@@ -23,10 +25,26 @@ public class SingletoneObserve {
         return instance;
     }
 
-    public void notifyContactsChange(final ArrayList<ContactRecord> contactRecs){
+    public void notifyContactAdd(final ContactRecord contactRec){
         if (!listeners.isEmpty()) {
             for (ContactsListener listener : listeners) {
-                listener.onContactsChange(contactRecs);
+                listener.onContactAdd(contactRec);
+            }
+        }
+    }
+
+    public void notifyContactsChange(final ContactRecord contactRec, final int position){
+        if (!listeners.isEmpty()) {
+            for (ContactsListener listener : listeners) {
+                listener.onContactsChange(contactRec,position );
+            }
+        }
+    }
+
+    public void notifyContactDel(final int position){
+        if (!listeners.isEmpty()) {
+            for (ContactsListener listener : listeners) {
+                listener.onContactDel(position );
             }
         }
     }

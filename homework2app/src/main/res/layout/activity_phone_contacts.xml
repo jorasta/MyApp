@@ -9,27 +9,9 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
+        app:title="@string/title_search_contact"
         style="@style/Toolbar">
 
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp">
-
-            <TextView
-                android:id="@+id/search_edit_text"
-                android:text="Search contact"
-                android:layout_marginEnd="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:paddingStart="10dp"
-                android:background="@color/colorBtnTxt"
-                android:drawableStart="@drawable/baseline_search_black_24"
-                android:textColor="@android:color/darker_gray" />
-
-        </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
@@ -38,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/no_contacts"
-        android:textSize="20sp"/>
+        android:textSize="@dimen/txt_size_no_contacts"/>
+
     <include layout="@layout/content_phone_contacts"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

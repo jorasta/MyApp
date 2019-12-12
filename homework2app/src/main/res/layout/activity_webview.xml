@@ -21,32 +21,15 @@
 
         <Button
             android:id="@+id/btn_prev_page"
-            android:drawableStart="@drawable/ic_arrow_back_black_24dp"
+            android:drawableStart="@drawable/ic_arrow_back_white_24dp"
             android:textAlignment="textStart"
-            android:layout_width="wrap_content"
-            android:paddingEnd="@dimen/default_padding"
-            android:paddingStart="@dimen/default_padding"
-            android:layout_height="@dimen/btn_height"
-            android:layout_marginTop="@dimen/default_margin"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:layout_marginEnd="@dimen/default_margin"
-            android:background="@drawable/res_btn_round_rect"
+            style="@style/WebViewButtons"
             android:layout_gravity="center_vertical|start"
-            android:text="@string/btn_back"
-            android:textColor="@color/colorBtnTxt">
-        </Button>
+            android:text="@string/btn_back"/>
         <Button
             android:id="@+id/btn_opn_brwsr"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/btn_height"
-            android:paddingEnd="@dimen/default_padding"
-            android:paddingStart="@dimen/default_padding"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:layout_marginTop="@dimen/default_margin"
-            android:layout_marginStart="@dimen/default_margin"
-            android:background="@drawable/res_btn_round_rect"
+            style="@style/WebViewButtons"
             android:layout_gravity="center_vertical|end"
-            android:text="@string/btn_opn_brwsr"
-            android:textColor="@color/colorBtnTxt" />
+            android:text="@string/btn_opn_brwsr"/>
     </LinearLayout>
 </LinearLayout>
