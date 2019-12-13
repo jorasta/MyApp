@@ -52,6 +52,7 @@ public class CustomView extends View {
     public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         setFocusable(true);
+        this.setDrawingCacheEnabled(true);
         init(attrs);
     }
 
@@ -102,12 +103,15 @@ public class CustomView extends View {
         paintSector2.setColor(sectorColors.get(1));
         paintSector3.setColor(sectorColors.get(2));
         paintSector4.setColor(sectorColors.get(3));
+        destroyDrawingCache();
         postInvalidate();
     }
 
+
+
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+
 
         float cx, cy;
         cx = getWidth() / 2;
@@ -122,6 +126,7 @@ public class CustomView extends View {
         canvas.drawCircle(cx,cy,circleRadius,paintCircle);
 
         buildDrawingCache();
+        super.onDraw(canvas);
     }
 
     public int getPxlColor(float x, float y){
