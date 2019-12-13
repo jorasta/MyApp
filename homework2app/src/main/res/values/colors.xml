@@ -10,9 +10,5 @@
     <!-- WebView-->
     <color name="colorBtnBack">#2C98F0</color>
     <!-- CustomView-->
-    <color name="colorSector1">#FF0000</color>
-    <color name="colorSector2">#14FF00</color>
-    <color name="colorSector3">#FFF500</color>
-    <color name="colorSector4">#001AFF</color>
     <color name="colorCenter">#A03A96</color>
 </resources>

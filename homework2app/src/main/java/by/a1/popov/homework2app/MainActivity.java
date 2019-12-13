@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, PhoneContacts.class));
                 break;
             case R.id.opn_customview:
-                //startActivity(new Intent(this, CustomViewActivity.class));
-                Toast.makeText(view.getContext(), "Not done yet :(", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, CustomViewActivity.class));
+                //Toast.makeText(view.getContext(), "Not done yet :(", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.opn_webpage:
                 startActivity(new Intent(this, WebViewActivity.class));

@@ -15,12 +15,13 @@
     <string name="hint_Name">Name</string>
     <string name="rb_Phone">Phone number</string>
     <string name="rb_Email">Email</string>
-
     <!-- WebView-->
-
     <string name="btn_back">Previous page</string>
     <string name="btn_opn_brwsr">Open in browser</string>
     <string name="home_page">https://google.com</string>
+    <string name="title_web_view">google.com</string>
     <!-- CustomView-->
-
+    <string name="switch_snackbar">Use snackbar</string>
+    <string name="switch_toast">Use Toast</string>
+    <string name="title_cust_view">Custom view</string>
 </resources>
