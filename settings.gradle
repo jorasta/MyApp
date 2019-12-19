@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':homework4app'
 rootProject.name='MyApp'
