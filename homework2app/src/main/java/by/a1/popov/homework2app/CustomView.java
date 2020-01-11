@@ -16,9 +16,7 @@ import java.util.Collections;
 
 public class CustomView extends View {
 
-
     private int circleColor;
-
     private ArrayList<Integer> sectorColors = new ArrayList<Integer>();
     private int circleRadius;
     private int sectorRadius;
@@ -62,7 +60,6 @@ public class CustomView extends View {
             return;
 
         TypedArray ta = getContext().obtainStyledAttributes(set, R.styleable.CustomView);
-
         String colors[] = getResources().getStringArray(R.array.sectorColors);
 
         for (int i = 0; i < colors.length; i++) {
@@ -89,11 +86,9 @@ public class CustomView extends View {
         paintSector4.setAntiAlias(true);
         paintSector4.setColor(sectorColors.get(3));
         paintSector4.setStyle(Paint.Style.FILL);
-
         paintCircle = new Paint();
         paintCircle.setAntiAlias(true);
         paintCircle.setColor(circleColor);
-
         ta.recycle();
     }
 
@@ -107,12 +102,8 @@ public class CustomView extends View {
         postInvalidate();
     }
 
-
-
     @Override
     protected void onDraw(Canvas canvas) {
-
-
         float cx, cy;
         cx = getWidth() / 2;
         cy = getHeight() / 2;
@@ -124,7 +115,6 @@ public class CustomView extends View {
         canvas.drawArc(oval, 180, 90, true, paintSector3);
         canvas.drawArc(oval, 270, 90, true, paintSector4);
         canvas.drawCircle(cx,cy,circleRadius,paintCircle);
-
         buildDrawingCache();
         super.onDraw(canvas);
     }

@@ -15,7 +15,7 @@ public class ContactRecord implements Parcelable {
     private String contact;
     private int icon;
 
-        public  ContactRecord(String name, String contact, int icon){
+    public  ContactRecord(String name, String contact, int icon){
         setName(name);
         setIcon(icon);
         setContact(contact);

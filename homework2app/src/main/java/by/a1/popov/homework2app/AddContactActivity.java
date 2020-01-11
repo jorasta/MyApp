@@ -13,9 +13,9 @@ import androidx.appcompat.widget.Toolbar;
 
 public class AddContactActivity extends AppCompatActivity {
 
-    EditText editText;
-    Toolbar toolbar;
-    RadioGroup radioGroup;
+    private EditText editText;
+    private Toolbar toolbar;
+    private RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

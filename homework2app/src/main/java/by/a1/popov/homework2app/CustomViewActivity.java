@@ -23,8 +23,8 @@ public class CustomViewActivity extends AppCompatActivity implements View.OnTouc
     float x;
     float y;
 
-    Switch aSwitch;
-    Toolbar toolbar;
+    private Switch aSwitch;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,6 @@ public class CustomViewActivity extends AppCompatActivity implements View.OnTouc
 
         x = event.getX();
         y = event.getY();
-
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: // нажатие

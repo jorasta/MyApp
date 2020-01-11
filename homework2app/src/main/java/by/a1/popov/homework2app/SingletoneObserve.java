@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class SingletoneObserve {
 
-
     interface ContactsListener{
         void onContactsChange(ContactRecord contactRec, int position);
         void onContactAdd(ContactRecord contactRec);
@@ -16,7 +15,6 @@ public class SingletoneObserve {
     private static SingletoneObserve instance;
 
     private SingletoneObserve() {}
-
 
     public static  SingletoneObserve getInstance(){
         if (instance == null) {
@@ -60,6 +58,4 @@ public class SingletoneObserve {
             listeners.remove(listener);
         }
     }
-
-
 }

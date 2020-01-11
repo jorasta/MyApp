@@ -12,9 +12,9 @@ import androidx.appcompat.widget.Toolbar;
 
 public class EditContactActivity extends AddContactActivity{
 
-    Button button;
-    Toolbar toolbar;
-    EditText editTextName, editTextContact;
+    private Button button;
+    private Toolbar toolbar;
+    private EditText editTextName, editTextContact;
     private int poz;
 
     @Override
@@ -43,7 +43,6 @@ public class EditContactActivity extends AddContactActivity{
             }
         });
 
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -62,11 +61,11 @@ public class EditContactActivity extends AddContactActivity{
                 return true;
             case R.id.action_edit:
 
-                EditText edtTextName = findViewById(R.id.viewEditName);
-                EditText edtTextContact = findViewById(R.id.viewEditContact);
+                editTextName = findViewById(R.id.viewEditName);
+                editTextContact = findViewById(R.id.viewEditContact);
 
-                ContactRecord cRec = new ContactRecord(edtTextName.getText().toString(),
-                                                       edtTextContact.getText().toString(),0);
+                ContactRecord cRec = new ContactRecord(editTextName.getText().toString(),
+                                                    editTextContact.getText().toString(),0);
                 SingletoneObserve.getInstance().notifyContactsChange(cRec,poz);
                 finish();
                 return true;

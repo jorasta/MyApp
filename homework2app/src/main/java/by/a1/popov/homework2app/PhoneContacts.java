@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -21,11 +22,13 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 
 public class PhoneContacts extends AppCompatActivity implements SingletoneObserve.ContactsListener {
 
-    private ArrayList<ContactRecord> contacts = new ArrayList<ContactRecord>() {};
+    private ArrayList<ContactRecord> contacts = new ArrayList<ContactRecord>() {
+    };
 
     private ContactsAdapter adapter;
     public static String KEY_POSITION = "position";
@@ -33,9 +36,9 @@ public class PhoneContacts extends AppCompatActivity implements SingletoneObserv
     public static String KEY_CONTACT = "contact";
     private static String KEY_VISIBLE = "visibility_no_contacts";
     private static String KEY_CONTACTS = "data_of_contacts";
-    RecyclerView recyclerView;
-    TextView textView;
-    Toolbar toolbar;
+    private RecyclerView recyclerView;
+    private TextView textView;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +49,7 @@ public class PhoneContacts extends AppCompatActivity implements SingletoneObserv
         recyclerView = findViewById(R.id.recyclerView);
         setSupportActionBar(toolbar);
 
-        if (savedInstanceState != null){
+        if (savedInstanceState != null) {
             textView.setVisibility(savedInstanceState.getInt(KEY_VISIBLE));
             contacts = savedInstanceState.getParcelableArrayList(KEY_CONTACTS);
         }
@@ -55,18 +58,17 @@ public class PhoneContacts extends AppCompatActivity implements SingletoneObserv
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            startActivity(new Intent(PhoneContacts.this, AddContactActivity.class));
+                startActivity(new Intent(PhoneContacts.this, AddContactActivity.class));
             }
         });
 
-
         recyclerView.setAdapter(new ContactsAdapter(contacts));
-        adapter = (ContactsAdapter)recyclerView.getAdapter();
+        adapter = (ContactsAdapter) recyclerView.getAdapter();
 
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
             recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
-            recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         SingletoneObserve.getInstance().subscribe(this);
 
@@ -98,6 +100,7 @@ public class PhoneContacts extends AppCompatActivity implements SingletoneObserv
         });
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -108,12 +111,11 @@ public class PhoneContacts extends AppCompatActivity implements SingletoneObserv
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         TextView textView = findViewById(R.id.textViewNoContacts);
         contacts = adapter.items;
-        outState.putInt(KEY_VISIBLE,textView.getVisibility());
+        outState.putInt(KEY_VISIBLE, textView.getVisibility());
         outState.putParcelableArrayList(KEY_CONTACTS, contacts);
         super.onSaveInstanceState(outState);
     }
@@ -126,76 +128,77 @@ public class PhoneContacts extends AppCompatActivity implements SingletoneObserv
 
     @Override
     public void onContactAdd(ContactRecord contactRec) {
-        adapter.AddItem(contactRec);
-        if (adapter.getItemCount()>0){
+        adapter.addItem(contactRec);
+        if (adapter.getItemCount() > 0) {
             textView.setVisibility(View.GONE);
         }
     }
 
     @Override
     public void onContactDel(int position) {
-        adapter.DelItem(position);
-        if (adapter.getItemCount() == 0){
+        adapter.delItem(position);
+        if (adapter.getItemCount() == 0) {
             textView.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     public void onContactsChange(ContactRecord contactRec, int position) {
-        adapter.ChangeItem(contactRec,position);
+        adapter.changeItem(contactRec, position);
     }
 
 
     /**
      * Adapter for RecyclerView
      */
-    private class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ContactsViewHolder>{
+    private class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ContactsViewHolder> {
 
         private ArrayList<ContactRecord> items;
         private ArrayList<ContactRecord> itemsCopy = new ArrayList<ContactRecord>();
 
 
-
-        public ContactsAdapter(ArrayList<ContactRecord> items){
+        public ContactsAdapter(ArrayList<ContactRecord> items) {
             super();
-            this.items = items;
-            if (!this.items.isEmpty()) {
-                this.itemsCopy.addAll(items);
+            if (items != null) {
+                this.items = items;
+                if (!this.items.isEmpty()) {
+                    this.itemsCopy.addAll(items);
+                }
             }
         }
 
-        protected void UpdateItemsCopy(){
+        protected void updateItemsCopy() {
             itemsCopy.clear();
             itemsCopy.addAll(items);
         }
 
-        public void AddItem(ContactRecord contactRecord){
+        public void addItem(ContactRecord contactRecord) {
             items.add(contactRecord);
-            UpdateItemsCopy();
+            updateItemsCopy();
             notifyDataSetChanged();
         }
 
-        public void DelItem(int position){
+        public void delItem(int position) {
             items.remove(position);
-            UpdateItemsCopy();
+            updateItemsCopy();
             notifyDataSetChanged();
         }
 
-        public void ChangeItem(ContactRecord contactRec, int position){
+        public void changeItem(ContactRecord contactRec, int position) {
             items.get(position).setContact(contactRec.getContact());
             items.get(position).setName(contactRec.getName());
-            UpdateItemsCopy();
+            updateItemsCopy();
             notifyItemChanged(position);
         }
 
         public void filter(String text) {
             items.clear();
-            if(text.isEmpty()){
+            if (text.isEmpty()) {
                 items.addAll(itemsCopy);
-            } else{
+            } else {
                 text = text.toLowerCase();
-                for(ContactRecord item: itemsCopy){
-                    if(item.getName().toLowerCase().contains(text) || item.getContact().toLowerCase().contains(text)){
+                for (ContactRecord item : itemsCopy) {
+                    if (item.getName().toLowerCase().contains(text) || item.getContact().toLowerCase().contains(text)) {
                         items.add(item);
                     }
                 }
@@ -206,7 +209,7 @@ public class PhoneContacts extends AppCompatActivity implements SingletoneObserv
         @NonNull
         @Override
         public ContactsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contact_view,parent,false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contact_view, parent, false);
             return new ContactsViewHolder(view);
         }
 
@@ -219,10 +222,10 @@ public class PhoneContacts extends AppCompatActivity implements SingletoneObserv
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(PhoneContacts.this,EditContactActivity.class);
-                    intent.putExtra(KEY_POSITION,position);
-                    intent.putExtra(KEY_NAME,contactRec.getName());
-                    intent.putExtra(KEY_CONTACT,contactRec.getContact());
+                    Intent intent = new Intent(PhoneContacts.this, EditContactActivity.class);
+                    intent.putExtra(KEY_POSITION, position);
+                    intent.putExtra(KEY_NAME, contactRec.getName());
+                    intent.putExtra(KEY_CONTACT, contactRec.getContact());
                     startActivity(intent);
                 }
             });
@@ -236,7 +239,7 @@ public class PhoneContacts extends AppCompatActivity implements SingletoneObserv
                 return 0;
         }
 
-        private  class ContactsViewHolder extends RecyclerView.ViewHolder{
+        private class ContactsViewHolder extends RecyclerView.ViewHolder {
 
             private ImageView imageView;
             private TextView textViewName;

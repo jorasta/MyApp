@@ -15,12 +15,12 @@ import android.webkit.WebViewClient;
 public class WebViewActivity extends AppCompatActivity implements View.OnClickListener {
 
     private WebView mWebView;
-    Toolbar toolbar;
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
-
         this.setTitle(R.string.btn_opn_brwsr);
 
         findViewById(R.id.btn_opn_brwsr).setOnClickListener(this);
@@ -75,5 +75,4 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
             super.onBackPressed();
         }
     }
-
 }
