@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String KEY_SCND = "SECOND_NUM";
     private String KEY_OPERTR = "OPERATOR";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,21 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onSaveInstanceState(outState);
     }
 
-    /**
-     * Checking is it number or operator
-     * @param value for checking
-     * @return number or -1, if it operator
-     */
-    private double checkIsNumber(String value) {
-        double result = -1;
-        try {
-            result = Double.parseDouble(value);
-        } catch (NumberFormatException ex) {
-
-            ex.printStackTrace();
-        } finally {
-            return result;
-        }
+    private boolean isNumeric(String s) {
+        return s != null && s.matches("[-+]?\\d*\\.?\\d+");
     }
 
     @Override
@@ -100,11 +85,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Button button = (Button) view;
             String buttonValue = button.getText().toString();
 
-            double buttonNumber = checkIsNumber(buttonValue);
             // button with number
-            if (buttonNumber != -1) {
+            if (isNumeric(buttonValue)) {
                 String currentValue = resultEditText.getText().toString();
-                if (checkIsNumber(currentValue) > -1) {
+                if (isNumeric(currentValue)) {
                     currentValue += buttonValue;
                     resultEditText.setText(currentValue);
                 } else {
@@ -114,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 if ("+".equals(buttonValue) || "-".equals(buttonValue) || "*".equals(buttonValue) || "/".equals(buttonValue)) {
                     String currentValue = resultEditText.getText().toString();
-                    if (checkIsNumber(currentValue) > -1) {
+                    if (isNumeric(currentValue)) {
                         firstNumber = Double.parseDouble(currentValue);
                     } else {
                         firstNumber = Double.MIN_VALUE;
@@ -130,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Button to make result
                 } else if ("=".equals(buttonValue)) {
                     String currentValue = resultEditText.getText().toString();
-                    if (checkIsNumber(currentValue) > -1) {
+                    if (isNumeric(currentValue)) {
                         secondNumber = Double.parseDouble(currentValue);
                     } else {
                         secondNumber = Double.MIN_VALUE;
@@ -147,16 +131,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     } else if ("/".equals(operator)) {
                         resultNumber = firstNumber / secondNumber;
                     }
+                    // show number without floating format if result is integer
                     resultEditText.setText(resultNumber % 1 != 0 ? String.valueOf(resultNumber) : String.valueOf((int) resultNumber));
                     secondNumber = resultNumber;
                     firstNumber = Double.MIN_VALUE;
-
                 }
             }
-
         }
     }
-
-
-
 }
