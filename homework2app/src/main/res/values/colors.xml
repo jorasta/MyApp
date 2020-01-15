@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2A56C6</color>
+    <color name="colorPrimaryDark">#1C3AA9</color>
+    <color name="colorAccent">#2C98F0</color>
+    <color name="colorBtnTxt">#FFFFFF</color>
+    <!-- Phonebook-->
+    <color name="colorFAB">#E91E63</color>
+    <color name="colorBtnRemove">#FE2727</color>
+    <!-- WebView-->
+    <color name="colorBtnBack">#2C98F0</color>
+    <!-- CustomView-->
+    <color name="colorCenter">#A03A96</color>
+</resources>
