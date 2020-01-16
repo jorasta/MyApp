@@ -1,2 +1,2 @@
-include ':app', ':mycalculator'
+include ':app', ':webbrowser_task3', ':homework2app', ':mycalculator'
 rootProject.name='MyApp'
