@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -30,27 +31,26 @@ public class AddContactActivity extends AppCompatActivity {
 
         /**
          * different position RadioButtons depend on orientation
-          */
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+         */
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             radioGroup.setOrientation(LinearLayout.VERTICAL);
-        }
-        else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             radioGroup.setOrientation(LinearLayout.HORIZONTAL);
         }
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-            switch (checkedId) {
-                case R.id.rbPhone:
-                    editContactText.setHint(R.string.hint_Phone);
-                    break;
-                case R.id.rbEmail:
-                    editContactText.setHint(R.string.hint_Email);
-                    break;
-                default:
-                    break;
-            }
+                switch (checkedId) {
+                    case R.id.rbPhone:
+                        editContactText.setHint(R.string.hint_Phone);
+                        break;
+                    case R.id.rbEmail:
+                        editContactText.setHint(R.string.hint_Email);
+                        break;
+                    default:
+                        break;
+                }
             }
         });
         setSupportActionBar(toolbar);
@@ -76,8 +76,8 @@ public class AddContactActivity extends AppCompatActivity {
                 RadioButton rbPhone = findViewById(R.id.rbPhone);
                 // create new Contact
                 Contacts cRec = new Contacts(editNameText.getText().toString(),
-                                             editContactText.getText().toString(),
-                                             rbPhone.isChecked() ? 1 : 0);
+                        editContactText.getText().toString(),
+                        rbPhone.isChecked() ? 1 : 0);
 
                 SingletoneObserve.getInstance().notifyContactAdd(cRec);
                 finish();

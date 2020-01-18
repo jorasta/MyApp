@@ -14,7 +14,7 @@ import by.a1.popov.homework4app.DBSrcs.Contacts;
 import by.a1.popov.homework4app.DBSrcs.ContactsDAO;
 import by.a1.popov.homework4app.DBSrcs.ContactsDB;
 
-public class EditContactActivity extends AddContactActivity{
+public class EditContactActivity extends AddContactActivity {
 
     private Button button;
     private Toolbar toolbar;
@@ -34,10 +34,9 @@ public class EditContactActivity extends AddContactActivity{
         button = findViewById(R.id.btn_remove);
 
         Intent intent = getIntent();
-        if (intent != null && intent.hasExtra(PhoneContacts.KEY_POSITION))
-        {
-            poz = intent.getIntExtra(PhoneContacts.KEY_POSITION,0);
-            contactId = intent.getIntExtra(PhoneContacts.KEY_ID,0);
+        if (intent != null && intent.hasExtra(PhoneContacts.KEY_POSITION)) {
+            poz = intent.getIntExtra(PhoneContacts.KEY_POSITION, 0);
+            contactId = intent.getIntExtra(PhoneContacts.KEY_ID, 0);
         }
         ContactsDB contactsDB = App.getInstance().getDatabase();
         contactsDAO = contactsDB.contactsDAO();
@@ -48,8 +47,8 @@ public class EditContactActivity extends AddContactActivity{
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            SingletoneObserve.getInstance().notifyContactDel(contactRec,poz);
-            finish();
+                SingletoneObserve.getInstance().notifyContactDel(contactRec, poz);
+                finish();
             }
         });
 
@@ -72,7 +71,7 @@ public class EditContactActivity extends AddContactActivity{
             case R.id.action_edit:
                 contactRec.setName(editTextName.getText().toString());
                 contactRec.setContact(editTextContact.getText().toString());
-                SingletoneObserve.getInstance().notifyContactsChange(contactRec,poz);
+                SingletoneObserve.getInstance().notifyContactsChange(contactRec, poz);
                 finish();
                 return true;
         }

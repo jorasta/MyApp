@@ -1,12 +1,18 @@
 package by.a1.popov.homework4app;
 
 import android.app.Application;
+
 import androidx.room.Room;
+
 import by.a1.popov.homework4app.DBSrcs.ContactsDB;
 
 public class App extends Application {
 
     public static App instance;
+
+    public static App getInstance() {
+        return instance;
+    }
 
     private ContactsDB database;
 
@@ -17,10 +23,6 @@ public class App extends Application {
         database = Room.databaseBuilder(this, ContactsDB.class, "contacts.db")
                 .allowMainThreadQueries()
                 .build();
-    }
-
-    public static App getInstance() {
-        return instance;
     }
 
     public ContactsDB getDatabase() {
