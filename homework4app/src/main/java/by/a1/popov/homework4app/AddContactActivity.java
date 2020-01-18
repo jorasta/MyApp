@@ -31,10 +31,12 @@ public class AddContactActivity extends AppCompatActivity {
         /**
          * different position RadioButtons depend on orientation
           */
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             radioGroup.setOrientation(LinearLayout.VERTICAL);
-        else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+        }
+        else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             radioGroup.setOrientation(LinearLayout.HORIZONTAL);
+        }
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
             @Override
