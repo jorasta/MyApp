@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomView">
+        <attr name="center_citcle_color" format="color" />
+        <attr name="center_citcle_size" format="dimension" />
+        <attr name="sector_size" format="dimension"/>
+    </declare-styleable>
+</resources>
