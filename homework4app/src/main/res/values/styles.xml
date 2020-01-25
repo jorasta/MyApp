@@ -1,0 +1,48 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Toolbar Style -->
+    <style name="Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <!-- MainActivity Buttons Style -->
+    <style name="MainButtons">
+        <item name="android:textColor">@color/colorBtnTxt</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/colorBtnBack</item>
+        <item name="android:layout_width">@dimen/main_btns_width</item>
+        <item name="android:layout_marginTop">@dimen/default_margin</item>
+    </style>
+
+    <!-- WebView Buttons Style -->
+    <style name="WebViewButtons">
+        <item name="android:textColor">@color/colorBtnTxt</item>
+        <item name="android:layout_height">@dimen/wv_btn_height</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@drawable/res_btn_round_rect</item>
+        <item name="android:layout_margin">@dimen/default_margin</item>
+        <item name="android:paddingEnd">@dimen/default_padding</item>
+        <item name="android:paddingStart">@dimen/default_padding</item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>
