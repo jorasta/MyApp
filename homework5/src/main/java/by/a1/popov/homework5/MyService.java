@@ -22,8 +22,6 @@ import java.util.Locale;
 public class MyService extends Service {
 
     public static final String EXTRA_ACTION = "EXTRA_ACTION";
-    public static boolean bound;
-
     MyBinder binder = new MyBinder();
 
     @Override
@@ -101,20 +99,17 @@ public class MyService extends Service {
     public IBinder onBind(Intent intent) {
         if (binder == null) {
             binder = new MyBinder();
-            bound = true;
         }
         return binder;
     }
 
     @Override
     public void onRebind(Intent intent) {
-        bound = true;
         super.onRebind(intent);
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
-        bound = false;
         return super.onUnbind(intent);
     }
 
