@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">WeatherForecast</string>
     <string name="title_add_city">Add City</string>
+    <string name="dialog_title_enter_city">Enter the city name</string>
+    <string name="dialog_title_delete_city">Delete city </string>
+    <string name="temp_symbol_celsius">°C</string>
+    <string name="temp_symbol_fahrenheit">°F</string>
+    <string name="toast_add_city">Please add the city</string>
+    <string name="toast_add_city_or_exit">Please add the city.\nOr press BACK twice to exit.</string>
+    <string name="hint_city_name">City name</string>
+    <string name="hint_no_city">No Cities. Please add</string>
 </resources>

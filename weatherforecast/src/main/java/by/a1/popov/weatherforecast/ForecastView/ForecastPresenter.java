@@ -1,8 +1,10 @@
 package by.a1.popov.weatherforecast.ForecastView;
 
-import by.a1.popov.weatherforecast.Repo.CurrentWeather;
+import android.app.Application;
 
 public interface ForecastPresenter {
-    void getCurrentWeather();
+    void getCurrentWeather(boolean tempMetric, String city);
+    void getForecastWeather(boolean tempMetric, String city);
+    void getLastCity(Application application);
 
 }

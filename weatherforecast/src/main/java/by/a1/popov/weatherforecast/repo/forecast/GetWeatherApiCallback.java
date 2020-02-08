@@ -1,4 +1,4 @@
-package by.a1.popov.weatherforecast.Repo;
+package by.a1.popov.weatherforecast.repo.forecast;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;

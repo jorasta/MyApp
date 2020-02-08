@@ -1,33 +1,70 @@
 package by.a1.popov.weatherforecast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
+import android.os.Handler;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import by.a1.popov.weatherforecast.CitiesFiew.CitiesFragment;
 import by.a1.popov.weatherforecast.ForecastView.ForecastFragment;
 
-public class MainActivity extends AppCompatActivity implements ForecastFragment.OnAddCityListener {
+public class MainActivity extends AppCompatActivity implements ForecastFragment.OnAddCityListener, CitiesFragment.OnSetCityListener {
 
-    FragmentManager fragmentManager;
+    private boolean doubleBackToExitPressedOnce = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        showForecastFragment();
+    }
 
-        fragmentTransaction.add(R.id.viewFrameContainer,ForecastFragment.newInstance(),ForecastFragment.class.getName());
-        fragmentTransaction.commit();
+    private void showForecastFragment() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.viewFrameContainer, ForecastFragment.newInstance(), ForecastFragment.class.getName())
+                .commit();
+    }
+
+    private void showCitiesFragment() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.viewFrameContainer, CitiesFragment.newInstance(), CitiesFragment.class.getName())
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override
     public void onAddCityListener() {
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.viewFrameContainer, CitiesFragment.newInstance(), CitiesFragment.class.getName());
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        showCitiesFragment();
+    }
+
+    @Override
+    public void onSetCityListener() {
+        getSupportFragmentManager()
+                .popBackStack();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (doubleBackToExitPressedOnce) {
+            finish();
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        CitiesFragment fragment = (CitiesFragment) getSupportFragmentManager()
+                .findFragmentByTag(CitiesFragment.class.getName());
+        if (fragment != null && fragment.getLastCityId() == 0){
+            Toast.makeText(this,
+                    getResources().getString(R.string.toast_add_city_or_exit),
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            super.onBackPressed();
+        }
+
+        new Handler().postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
     }
 }
