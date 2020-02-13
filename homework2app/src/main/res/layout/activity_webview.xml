@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/Toolbar"
+        app:title="@string/title_web_view"
+        app:titleTextColor="@color/colorBtnTxt" />
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+   </WebView>
+
+    <LinearLayout
+        android:layout_weight="0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_prev_page"
+            android:drawableStart="@drawable/ic_arrow_back_white_24dp"
+            android:textAlignment="textStart"
+            style="@style/WebViewButtons"
+            android:layout_gravity="center_vertical|start"
+            android:text="@string/btn_back"/>
+        <Button
+            android:id="@+id/btn_opn_brwsr"
+            style="@style/WebViewButtons"
+            android:layout_gravity="center_vertical|end"
+            android:text="@string/btn_opn_brwsr"/>
+    </LinearLayout>
+</LinearLayout>

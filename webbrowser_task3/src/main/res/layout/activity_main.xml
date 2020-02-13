@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+   </WebView>
+
+    <LinearLayout
+        android:layout_weight="0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_prev_page"
+            android:drawableStart="@drawable/ic_arrow_back_black_24dp"
+            android:textAlignment="textStart"
+            android:layout_width="wrap_content"
+            android:paddingEnd="@dimen/btn_padding"
+            android:paddingStart="@dimen/btn_padding"
+            android:layout_height="@dimen/btn_heigth"
+            android:layout_marginTop="@dimen/btn_margin"
+            android:layout_marginBottom="@dimen/btn_margin"
+            android:layout_marginEnd="@dimen/btn_margin"
+            android:background="@drawable/res_btn_round_rect"
+            android:layout_gravity="center_vertical|start"
+            android:text="@string/btn_back"
+            android:textColor="@color/colorBtnTxt">
+        </Button>
+        <Button
+            android:id="@+id/btn_opn_brwsr"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_heigth"
+            android:paddingEnd="@dimen/btn_padding"
+            android:paddingStart="@dimen/btn_padding"
+            android:layout_marginBottom="@dimen/btn_margin"
+            android:layout_marginTop="@dimen/btn_margin"
+            android:layout_marginStart="@dimen/btn_margin"
+            android:background="@drawable/res_btn_round_rect"
+            android:layout_gravity="center_vertical|end"
+            android:text="@string/btn_opn_brwsr"
+            android:textColor="@color/colorBtnTxt" />
+    </LinearLayout>
+</LinearLayout>
