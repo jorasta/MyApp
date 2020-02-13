@@ -1,5 +1,7 @@
 package by.a1.popov.homework7910app.phonebook;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -8,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,6 +46,8 @@ public class EditContactFragment extends BaseFragment implements EditContactsVie
     public EditText editTextName;
     @BindView(R.id.viewEditContact)
     public EditText editTextContact;
+    @BindView(R.id.imageViewerPhoto)
+    public ImageView imageViewerPhoto;
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
@@ -65,7 +70,6 @@ public class EditContactFragment extends BaseFragment implements EditContactsVie
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     @Nullable
     @Override
@@ -107,6 +111,10 @@ public class EditContactFragment extends BaseFragment implements EditContactsVie
         contactRec = contact;
         editTextName.setText(contactRec.getName());
         editTextContact.setText(contactRec.getContact());
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        Bitmap bitmap = BitmapFactory.decodeFile(contactRec.getPhotoFile().getAbsolutePath(), options);
+        imageViewerPhoto.setImageBitmap(bitmap);
     }
 
     private void fillContactInfo() {

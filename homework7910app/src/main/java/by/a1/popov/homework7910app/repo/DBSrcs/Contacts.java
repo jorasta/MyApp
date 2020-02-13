@@ -3,9 +3,14 @@ package by.a1.popov.homework7910app.repo.DBSrcs;
 import android.content.ContentValues;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import java.io.File;
 
 @Entity
+@TypeConverters(Converters.class)
 public class Contacts {
 
     public static final String CONTACT_ID = "id";
@@ -18,11 +23,20 @@ public class Contacts {
     private String name;
     private String contact;
     private int typeOfContact;
+    private File photoFile;
 
     public Contacts(String name, String contact, int typeOfContact) {
         this.name = name;
         this.contact = contact;
         this.typeOfContact = typeOfContact;
+    }
+
+    public File getPhotoFile() {
+        return photoFile;
+    }
+
+    public void setPhotoFile(File photoFile) {
+        this.photoFile = photoFile;
     }
 
     public String getName() {
