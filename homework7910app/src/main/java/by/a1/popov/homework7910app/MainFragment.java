@@ -19,7 +19,7 @@ import static by.a1.popov.homework7910app.MainActivity.KEY_WEBVIEW;
 
 public class MainFragment extends BaseFragment {
 
-    public static MainFragment newInstance(){
+    static MainFragment newInstance(){
         return new MainFragment();
     }
 
@@ -45,21 +45,21 @@ public class MainFragment extends BaseFragment {
     }
 
     @OnClick(R.id.opn_phonebook)
-    public void onPhoneBookBtnClickListener(){
+    void onPhoneBookBtnClickListener(){
         if (listener != null) {
             listener.onButtonClickMainListener(KEY_PHONEBOOK);
         }
     }
 
     @OnClick(R.id.opn_customview)
-    public void onCustomViewBtnClickListener(){
+    void onCustomViewBtnClickListener(){
         if (listener != null) {
             listener.onButtonClickMainListener(KEY_CUSTOM_VIEW);
         }
     }
 
     @OnClick(R.id.opn_webpage)
-    public void onWebViewBtnClickListener(){
+    void onWebViewBtnClickListener(){
         if (listener != null) {
             listener.onButtonClickMainListener(KEY_WEBVIEW);
         }

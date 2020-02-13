@@ -1,31 +1,29 @@
-package by.a1.popov.homework7910app.repo.DBSrcs;
+package by.a1.popov.contentresolver;
 
-import android.content.ContentValues;
-
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity
 public class Contacts {
 
-    public static final String CONTACT_ID = "id";
-    public static final String CONTACT_NAME = "name";
-    public static final String CONTACT_DATA = "contact";
-    public static final String CONTACT_TYPE = "typeOfContact";
+    static final String AUTHORITY = "by.a1.popov.homework7910.contentprovider";
+    static final String TABLE_CONTACTS = "contacts";
 
-    @PrimaryKey (autoGenerate = true)
+    static final String CONTACT_ID = "id";
+    static final String CONTACT_NAME = "name";
+    static final String CONTACT_DATA = "contact";
+    static final String CONTACT_TYPE = "typeOfContact";
+
+
     private long id;
     private String name;
     private String contact;
     private int typeOfContact;
 
-    public Contacts(String name, String contact, int typeOfContact) {
+    Contacts(long id, String name, String contact, int typeOfContact) {
+        this.id = id;
         this.name = name;
         this.contact = contact;
         this.typeOfContact = typeOfContact;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
@@ -33,7 +31,7 @@ public class Contacts {
         this.name = name;
     }
 
-    public String getContact() {
+    String getContact() {
         return contact;
     }
 
@@ -41,7 +39,7 @@ public class Contacts {
         this.contact = contact;
     }
 
-    public int getTypeOfContact() {
+    int getTypeOfContact() {
         return typeOfContact;
     }
 
@@ -49,7 +47,7 @@ public class Contacts {
         this.typeOfContact = typeOfContact;
     }
 
-    public long getId() {
+    long getId() {
         return id;
     }
 

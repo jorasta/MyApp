@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements OnButtonClickMain
             case KEY_ADD_CONTACT:
                 showViewFragment(AddContactFragment.newInstance(),AddContactFragment.class.getName());
                 break;
-
         }
     }
 

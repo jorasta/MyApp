@@ -1,2 +1,2 @@
-include ':app', ':homework7910app'
+include ':app', ':homework7910app', ':contentresolver'
 rootProject.name='MyApp'

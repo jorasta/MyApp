@@ -12,7 +12,7 @@ public class ContactsRepo {
     private ContactsDAO contactsDAO;
 
     public ContactsRepo() {
-        contactsDAO =  App.getInstance().getDatabase().contactsDAO();
+        contactsDAO = App.getInstance().getDatabase().contactsDAO();
     }
 
     public CompletableFuture<List<Contacts>> getAllContacts() {

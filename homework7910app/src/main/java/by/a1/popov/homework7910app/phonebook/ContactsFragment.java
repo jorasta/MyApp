@@ -37,7 +37,7 @@ import static by.a1.popov.homework7910app.MainActivity.KEY_ADD_CONTACT;
 
 public class ContactsFragment extends BaseFragment implements ContactsView {
 
-    public static ContactsFragment newInstance(){
+    public static ContactsFragment newInstance() {
         return new ContactsFragment();
     }
 
@@ -61,18 +61,30 @@ public class ContactsFragment extends BaseFragment implements ContactsView {
         }
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        presenter.detachView(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getContacts();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.fragment_phone_contacts,container,false);
+        return inflater.inflate(R.layout.fragment_phone_contacts, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         activity = (AppCompatActivity) getActivity();
-        if (activity != null){
+        if (activity != null) {
             activity.setSupportActionBar(toolbar);
             activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
@@ -118,7 +130,7 @@ public class ContactsFragment extends BaseFragment implements ContactsView {
     }
 
     @OnClick(R.id.fab)
-    void onClickFab(){
+    void onClickFab() {
         listener.onButtonClickMainListener(KEY_ADD_CONTACT);
     }
 
@@ -209,10 +221,10 @@ public class ContactsFragment extends BaseFragment implements ContactsView {
 
             ContactsViewHolder(@NonNull View itemView) {
                 super(itemView);
-                ButterKnife.bind(this,itemView);
+                ButterKnife.bind(this, itemView);
             }
 
-            void showContact(Contacts contactRec){
+            void showContact(Contacts contactRec) {
                 textViewContact.setText(contactRec.getContact());
                 textViewName.setText(contactRec.getName());
                 int resId = contactRec.getTypeOfContact() == 1 ?

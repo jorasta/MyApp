@@ -63,11 +63,11 @@ public class CustomView extends View {
 
         TypedArray ta = getContext().obtainStyledAttributes(set, R.styleable.CustomView);
         String[] colors = getResources().getStringArray(R.array.sectorColors);
-        for (int i = 0; i < colors.length; i++) {
-            sectorColors.add(Color.parseColor(colors[i]));
+        for (String color : colors) {
+            sectorColors.add(Color.parseColor(color));
         }
         int circleColor = ta.getColor(R.styleable.CustomView_center_citcle_color,
-                ContextCompat.getColor(getContext(),R.color.colorCenter));
+                ContextCompat.getColor(getContext(), R.color.colorCenter));
         circleRadius = ta.getDimensionPixelSize(R.styleable.CustomView_center_citcle_size, (int) getResources().getDimension(R.dimen.circle_radius));
         sectorRadius = ta.getDimensionPixelSize(R.styleable.CustomView_center_citcle_size, (int) getResources().getDimension(R.dimen.sector_radius));
         paintSector1 = new Paint();
@@ -104,6 +104,7 @@ public class CustomView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
         float cx, cy;
         cx = getWidth() / 2;
         cy = getHeight() / 2;
@@ -116,7 +117,6 @@ public class CustomView extends View {
         canvas.drawArc(oval, 270, 90, true, paintSector4);
         canvas.drawCircle(cx, cy, circleRadius, paintCircle);
         buildDrawingCache();
-        super.onDraw(canvas);
     }
 
     public int getPxlColor(float x, float y) {

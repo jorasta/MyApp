@@ -34,7 +34,7 @@ import by.a1.popov.homework7910app.R;
 
 public class CustomViewFragment extends BaseFragment implements View.OnTouchListener {
 
-    public static CustomViewFragment newInstance(){
+    public static CustomViewFragment newInstance() {
         return new CustomViewFragment();
     }
 
@@ -50,14 +50,14 @@ public class CustomViewFragment extends BaseFragment implements View.OnTouchList
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.fragment_custom_view,container,false);
+        return inflater.inflate(R.layout.fragment_custom_view, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         activity = (AppCompatActivity) getActivity();
-        if (activity != null){
+        if (activity != null) {
             activity.setSupportActionBar(toolbar);
             activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
@@ -88,43 +88,41 @@ public class CustomViewFragment extends BaseFragment implements View.OnTouchList
         float x = event.getX();
         float y = event.getY();
 
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN: // нажатие
-                int clr = customView.getPxlColor(x, y);
-                int clr2 = ContextCompat.getColor(activity.getApplicationContext(),R.color.colorCenter);
-                String textMsg = "Coordinates [x:" + (int) x + "; y:" + (int) y + "]";
-                // touched one of color sectors
-                if ((clr != clr2) && (clr != 0)) {
-                    if (aSwitch.isChecked()) {
-                        Snackbar snackbar = Snackbar.make(v, textMsg, Snackbar.LENGTH_SHORT);
-                        View snackbarView = snackbar.getView();
-                        TextView textView = snackbarView.findViewById(R.id.snackbar_text);
-                        textView.setTextColor(clr);
-                        snackbar.show();
-                        // get current time for new log record
-                        Date currentTime = Calendar.getInstance().getTime();
-                        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy - HH:mm:ss", Locale.getDefault());
-                        String strDate = sdf.format(currentTime);
-                        // add new log record in file snackbarLog.log
-                        try {
-                            FileWriter fw = new FileWriter(activity.getFilesDir() + "/snackbarLog.log", true);
-                            BufferedWriter bw = new BufferedWriter(fw);
-                            PrintWriter printWriter = new PrintWriter(bw);
-                            printWriter.println(strDate + " - " + textMsg);
-                            printWriter.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        //Toast.makeText(v.findViewById(R.id.custom_view_root).getContext(), textMsg, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(activity.getApplicationContext(), textMsg, Toast.LENGTH_SHORT).show();
+        if (event.getAction() == MotionEvent.ACTION_DOWN) { // нажатие
+            int clr = customView.getPxlColor(x, y);
+            int clr2 = ContextCompat.getColor(activity.getApplicationContext(), R.color.colorCenter);
+            String textMsg = "Coordinates [x:" + (int) x + "; y:" + (int) y + "]";
+            // touched one of color sectors
+            if ((clr != clr2) && (clr != 0)) {
+                if (aSwitch.isChecked()) {
+                    Snackbar snackbar = Snackbar.make(v, textMsg, Snackbar.LENGTH_SHORT);
+                    View snackbarView = snackbar.getView();
+                    TextView textView = snackbarView.findViewById(R.id.snackbar_text);
+                    textView.setTextColor(clr);
+                    snackbar.show();
+                    // get current time for new log record
+                    Date currentTime = Calendar.getInstance().getTime();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy - HH:mm:ss", Locale.getDefault());
+                    String strDate = sdf.format(currentTime);
+                    // add new log record in file snackbarLog.log
+                    try {
+                        FileWriter fw = new FileWriter(activity.getFilesDir() + "/snackbarLog.log", true);
+                        BufferedWriter bw = new BufferedWriter(fw);
+                        PrintWriter printWriter = new PrintWriter(bw);
+                        printWriter.println(strDate + " - " + textMsg);
+                        printWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 } else {
-                    // touched central sector
-                    if (clr == clr2)
-                        customView.shuffleColors();
+                    //Toast.makeText(v.findViewById(R.id.custom_view_root).getContext(), textMsg, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity.getApplicationContext(), textMsg, Toast.LENGTH_SHORT).show();
                 }
-                break;
+            } else {
+                // touched central sector
+                if (clr == clr2)
+                    customView.shuffleColors();
+            }
         }
         return true;
     }

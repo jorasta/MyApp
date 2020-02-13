@@ -9,4 +9,7 @@ public interface ContactsPresenter {
     void addContact(Contacts contact);
     void deleteContact(Contacts contact);
     void updateContact(Contacts contact);
+    void detachView(ContactsView view);
+    void detachView(EditContactsView view);
+    void detachView(AddContactsView view);
 }

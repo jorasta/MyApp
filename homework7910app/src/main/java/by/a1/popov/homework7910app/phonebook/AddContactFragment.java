@@ -25,7 +25,7 @@ import by.a1.popov.homework7910app.utils.BaseFragment;
 
 public class AddContactFragment extends BaseFragment implements AddContactsView {
 
-    public static AddContactFragment newInstance(){
+    public static AddContactFragment newInstance() {
         return new AddContactFragment();
     }
 
@@ -48,14 +48,14 @@ public class AddContactFragment extends BaseFragment implements AddContactsView 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.fragment_add_contact,container,false);
+        return inflater.inflate(R.layout.fragment_add_contact, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         activity = (AppCompatActivity) getActivity();
-        if (activity != null){
+        if (activity != null) {
             activity.setSupportActionBar(toolbar);
             activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
@@ -84,6 +84,12 @@ public class AddContactFragment extends BaseFragment implements AddContactsView 
         menu.clear();
         inflater.inflate(R.menu.add_contact_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        presenter.detachView(this);
     }
 
     @Override

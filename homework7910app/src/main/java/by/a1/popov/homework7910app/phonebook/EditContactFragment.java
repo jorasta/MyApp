@@ -23,6 +23,7 @@ import by.a1.popov.homework7910app.utils.BaseFragment;
 public class EditContactFragment extends BaseFragment implements EditContactsView {
 
     private static final String KEY_CONTACT_ID = "KEY_CONTACT_ID";
+
     public static EditContactFragment newInstance(long id) {
         Bundle bundle = new Bundle();
         bundle.putLong(KEY_CONTACT_ID, id);
@@ -70,22 +71,29 @@ public class EditContactFragment extends BaseFragment implements EditContactsVie
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.fragment_edit_contact,container,false);
+        return inflater.inflate(R.layout.fragment_edit_contact, container, false);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        presenter.detachView(this);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         activity = (AppCompatActivity) getActivity();
-        if (activity != null){
+        if (activity != null) {
             activity.setSupportActionBar(toolbar);
             activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         presenter = new ContactsPresenterImpl(this);
         fillContactInfo();
     }
+
     @OnClick(R.id.btn_remove)
-    void onClickListener(){
+    void onClickListener() {
         presenter.deleteContact(contactRec);
     }
 
@@ -101,7 +109,7 @@ public class EditContactFragment extends BaseFragment implements EditContactsVie
         editTextContact.setText(contactRec.getContact());
     }
 
-    private void fillContactInfo(){
+    private void fillContactInfo() {
         Bundle bundle = getArguments();
         if (bundle != null) {
             presenter.getContactById(bundle.getLong(KEY_CONTACT_ID));

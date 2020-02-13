@@ -15,9 +15,11 @@ public class ContactsPresenterImpl implements ContactsPresenter {
     ContactsPresenterImpl(ContactsView view) {
         this.contactsView = view;
     }
+
     ContactsPresenterImpl(AddContactsView view) {
         this.addContactsView = view;
     }
+
     ContactsPresenterImpl(EditContactsView view) {
         this.editContactsView = view;
     }
@@ -31,24 +33,40 @@ public class ContactsPresenterImpl implements ContactsPresenter {
     @Override
     public void getContactById(long id) {
         contactsRepo.getContactById(id)
-                .thenAcceptAsync(contacts -> editContactsView.showContactData(contacts),TaskExecutors.MAIN_THREAD);
+                .thenAcceptAsync(contacts -> editContactsView.showContactData(contacts), TaskExecutors.MAIN_THREAD);
     }
 
     @Override
     public void addContact(Contacts contact) {
         contactsRepo.insertContact(contact)
-                .thenAcceptAsync(aVoid -> addContactsView.showContacts(),TaskExecutors.MAIN_THREAD);
+                .thenAcceptAsync(aVoid -> addContactsView.showContacts(), TaskExecutors.MAIN_THREAD);
     }
 
     @Override
     public void deleteContact(Contacts contact) {
         contactsRepo.deleteContact(contact)
-                .thenAcceptAsync(aVoid -> editContactsView.showContacts(),TaskExecutors.MAIN_THREAD);
+                .thenAcceptAsync(aVoid -> editContactsView.showContacts(), TaskExecutors.MAIN_THREAD);
     }
 
     @Override
     public void updateContact(Contacts contact) {
         contactsRepo.updateContact(contact)
-                .thenAcceptAsync(aVoid -> editContactsView.showContacts(),TaskExecutors.MAIN_THREAD);
+                .thenAcceptAsync(aVoid -> editContactsView.showContacts(), TaskExecutors.MAIN_THREAD);
     }
+
+    @Override
+    public void detachView(ContactsView view) {
+        contactsView = null;
+    }
+
+    @Override
+    public void detachView(EditContactsView view) {
+        addContactsView = null;
+    }
+
+    @Override
+    public void detachView(AddContactsView view) {
+        editContactsView = null;
+    }
+
 }
