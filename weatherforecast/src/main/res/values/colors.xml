@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#03a9f4</color>
+    <color name="colorPrimaryDark">#007ac1</color>
+    <color name="colorAccent">#ffca28</color>
+    <color name="colorBtnTxt">#FFFFFF</color>
+    <color name="colorBackgroundCurrWeather">#67daff</color>
+    <color name="colorBackgroundForecast">#e1e2e1</color>
+</resources>
