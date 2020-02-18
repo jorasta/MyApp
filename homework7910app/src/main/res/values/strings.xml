@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">HomeWork7910</string>
+    <string name="title_main">Choose action</string>
+    <string name="btn_open_phonebook">Open phonebook</string>
+    <string name="btn_open_cust_view">Open custom view</string>
+    <string name="btn_open_web">Open web page</string>
+    <!-- Phonebook-->
+    <string name="title_add_contact">Add contact</string>
+    <string name="title_search_contact">Search contact</string>
+    <string name="title_edit_contact">Edit contact</string>
+    <string name="no_contacts">No contacts. Please add</string>
+    <string name="btn_remove">Remove</string>
+    <string name="hint_Email">Email</string>
+    <string name="hint_Phone">Phone number</string>
+    <string name="hint_Name">Name</string>
+    <string name="rb_Phone">Phone number</string>
+    <string name="rb_Email">Email</string>
+    <!-- WebView-->
+    <string name="btn_back">Previous page</string>
+    <string name="btn_opn_brwsr">Open in browser</string>
+    <string name="home_page">https://google.com</string>
+    <string name="title_web_view">google.com</string>
+    <!-- CustomView-->
+    <string name="switch_snackbar">Use snackbar</string>
+    <string name="switch_toast">Use Toast</string>
+    <string name="title_cust_view">Custom view</string>
+</resources>
